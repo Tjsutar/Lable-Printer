@@ -19,7 +19,7 @@ const SignUp: React.FC = () => {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      alert("User created successfully!");
+      // alert("User created successfully!");
       {<div className="space-x-4">
         <button
           onClick={() => navigate("/signup")}

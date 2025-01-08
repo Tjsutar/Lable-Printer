@@ -19,7 +19,7 @@ const SignIn: React.FC = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert("Signed in successfully!");
+      // alert("Signed in successfully!");
       navigate("/excelimport");
     } catch (err:any) {
       setError("Error signing in: " + err.message);
