@@ -1,30 +1,22 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ExcelImport from './components/ExcelImport'; // Import the ExcelImport component
-import SuccessPage from './components/SuccessPage';
-// import SuccessPage from './components/SuccessPage'; // Optional success page after data import
+// src/App.tsx
 
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
+import Home from "./pages/Home";
+import ExcelImport from "./components/ExcelImport";
+// import "./index"
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-100">
-        <header className="bg-blue-600 text-white py-4">
-          <div className="container mx-auto text-center">
-            <h1 className="text-3xl font-semibold">Excel File Importer</h1>
-            <p className="mt-2 text-lg">Upload and import your Excel files with ease</p>
-          </div>
-        </header>
-
-        <main className="container mx-auto p-6">
-          <Routes>
-            <Route path="/" element={<ExcelImport />} />
-            <Route path="/success" element={<SuccessPage/>} />
-          </Routes>
-        </main>
-
-        <footer className="bg-gray-800 text-white text-center py-4">
-          <p>© 2024 Your Company</p>
-        </footer>
+      <div className="App bg-gray-100 min-h-screen flex justify-center items-center">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/excelimport" element={<ExcelImport />} />
+        </Routes>
       </div>
     </Router>
   );
