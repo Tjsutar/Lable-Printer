@@ -203,34 +203,31 @@ const ExcelImport: React.FC = () => {
 
       {/* Display the imported data if available */}
       {tempData.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Table to display Excel data */}
-          <div className="overflow-x-auto bg-white rounded-lg shadow-md">
-            <table className="w-full  border-collapse">
-              <thead>
-                <tr>
-                  {Object.keys(tempData[0]).map((header, index) => (
-                    <th key={index} className="px-6 py-4 border bg-gray-200">{header}</th>
+        <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr>
+                {Object.keys(tempData[0]).map((header, index) => (
+                  <th key={index} className="px-6 py-4 border bg-gray-200">{header}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {tempData.map((row, rowIndex) => (
+                <tr
+                  key={rowIndex}
+                  onMouseEnter={() => setHoveredRow(rowIndex)}
+                  onMouseLeave={() => setHoveredRow(null)}
+                  onClick={() => handleRowClick(row)}
+                  className={`cursor-pointer ${hoveredRow === rowIndex ? "bg-gray-100" : ""}`}
+                >
+                  {Object.values(row).map((cell, cellIndex) => (
+                    <td key={cellIndex} className="px-6 py-4 border">{cell}</td>
                   ))}
                 </tr>
-              </thead>
-              <tbody>
-                {tempData.map((row, rowIndex) => (
-                  <tr
-                    key={rowIndex}
-                    onMouseEnter={() => setHoveredRow(rowIndex)}
-                    onMouseLeave={() => setHoveredRow(null)}
-                    onClick={() => handleRowClick(row)}
-                    className={`cursor-pointer ${hoveredRow === rowIndex ? "bg-gray-100" : ""}`}
-                  >
-                    {Object.values(row).map((cell, cellIndex) => (
-                      <td key={cellIndex} className="px-6 py-4 border">{cell}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : (
         <p>No data to display</p>
